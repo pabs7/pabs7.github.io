@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diario de la aventura — Pablo José Cortés Santos</title>
+  <meta name="description" content="Bitácora de expedición de un proyecto de Pablo José Cortés Santos, Tech Lead Backend / Full Stack Developer." />
+  <meta name="color-scheme" content="light" />
+  <meta name="robots" content="noindex" />
+
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body class="diario">
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a class="nav__brand" href="../index.html">
+        PCS <span class="nav__brand-sub">// diario de la aventura</span>
+      </a>
+      <div class="nav__actions">
+        <a class="nav__link" href="../index.html">Campamento</a>
+        <a class="nav__link" href="../refugio.html">Refugio</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <div class="container" style="padding-block: var(--space-6);">
+      <article class="diario__sheet" id="diario-content" aria-live="polite">
+        <p>Desplegando el mapa…</p>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <p>© <span id="current-year">2026</span> Pablo José Cortés Santos</p>
+      <p>Hecho con HTML, CSS y JavaScript. <a href="https://github.com/pabs7/pabs7.github.io" target="_blank" rel="noopener noreferrer">Código fuente</a></p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("current-year").textContent = String(new Date().getFullYear());
+  </script>
+  <script type="module" src="../js/diario.js"></script>
+</body>
+</html>

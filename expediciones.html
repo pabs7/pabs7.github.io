@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Expediciones — Pablo José Cortés Santos</title>
+  <meta name="description" content="Todos los proyectos de Pablo José Cortés Santos, Tech Lead Backend / Full Stack Developer." />
+  <meta name="color-scheme" content="light" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Expediciones de Pablo José Cortés Santos" />
+  <meta property="og:description" content="Proyectos de backend, full stack y sistemas embebidos." />
+  <meta property="og:locale" content="es_ES" />
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="canonical" href="https://pabs7.github.io/expediciones.html" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="diario">
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a class="nav__brand" href="index.html">
+        PCS <span class="nav__brand-sub">// diario de montaña</span>
+      </a>
+      <div class="nav__actions">
+        <a class="nav__link" href="index.html">Campamento</a>
+        <a class="nav__link" href="refugio.html">Refugio</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <div class="container bitacora">
+      <nav class="cuaderno-tabs" aria-label="Secciones del diario de montaña">
+        <a class="cuaderno-tabs__tab" href="bitacora.html">Trayectoria</a>
+        <a class="cuaderno-tabs__tab" href="expediciones.html" aria-current="page">Expediciones</a>
+      </nav>
+
+      <article class="diario__sheet">
+        <p class="diario__meta">Diario de montaña</p>
+        <h1 class="diario__title">Expediciones</h1>
+        <p>Cada expedición es un proyecto. También puedes encontrarlas como cumbres desde el campamento base.</p>
+
+        <ol class="expediciones" id="expediciones-list">
+          <!-- Generado por js/expediciones.js a partir de js/projects.js -->
+        </ol>
+
+        <div class="diario__nav">
+          <a class="btn btn--secondary" href="refugio.html">Volver al refugio</a>
+          <a class="btn btn--secondary" href="index.html">Ir al campamento base</a>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <p>© <span id="current-year">2026</span> Pablo José Cortés Santos</p>
+      <p>Hecho con HTML, CSS y JavaScript. <a href="https://github.com/pabs7/pabs7.github.io" target="_blank" rel="noopener noreferrer">Código fuente</a></p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("current-year").textContent = String(new Date().getFullYear());
+  </script>
+  <script type="module" src="js/expediciones.js"></script>
+</body>
+</html>

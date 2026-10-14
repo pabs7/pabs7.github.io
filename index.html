@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pablo José Cortés Santos — Campamento base | Tech Lead Backend / Full Stack Developer</title>
+  <meta name="description" content="Portfolio de Pablo José Cortés Santos, Tech Lead Backend / Full Stack Developer. Explora mis proyectos como montañas desde el campamento base." />
+  <meta name="color-scheme" content="light" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Pablo José Cortés Santos — Campamento base" />
+  <meta property="og:description" content="Tech Lead Backend / Full Stack Developer. Explora mis proyectos como montañas desde el campamento base." />
+  <meta property="og:locale" content="es_ES" />
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="canonical" href="https://pabs7.github.io/" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="scene-page">
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a class="nav__brand" href="index.html">
+        PCS <span class="nav__brand-sub">// campamento base</span>
+      </a>
+      <div class="nav__actions">
+        <a class="nav__link" href="index.html" aria-current="page">Campamento</a>
+        <a class="nav__link" href="refugio.html">Refugio</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <section class="scene" id="scene" aria-label="Campamento base">
+      <div class="scene__viewport" id="scene-viewport">
+        <svg class="scene__art" id="scene-art" viewBox="25 -180 1383 900" preserveAspectRatio="xMidYMid slice" style="--scene-ratio: 1.537">
+          <defs>
+            <linearGradient id="scene-spot-fade" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="black" />
+              <stop offset="0.6" stop-color="black" />
+              <stop offset="1" stop-color="white" />
+            </linearGradient>
+            <mask id="scene-spot-mask" maskUnits="userSpaceOnUse" x="0" y="-180" width="1408" height="948">
+              <rect x="0" y="-180" width="1408" height="948" fill="white" />
+              <polygon id="scene-spot-hole" points="" fill="url(#scene-spot-fade)" />
+            </mask>
+          </defs>
+          <!-- 1 unidad de solape con la ilustración para que no aparezca una línea en el empalme -->
+          <image class="scene__image" href="assets/img/fondo-cielo.webp" x="0" y="-180" width="1408" height="181" aria-hidden="true" />
+          <image class="scene__image" href="assets/img/fondo-sierra.webp" x="0" y="0" width="1408" height="768" aria-hidden="true" />
+          <rect class="scene__dim" x="0" y="-180" width="1408" height="948" mask="url(#scene-spot-mask)" aria-hidden="true" />
+          <g id="scene-hotspots">
+            <!-- Generado por js/scene.js: un enlace por pico (proyecto) y otro para el refugio -->
+          </g>
+          <g class="cota" id="scene-cota" aria-hidden="true">
+            <line class="cota__line" id="scene-cota-line" />
+            <polygon class="cota__vertex" id="scene-cota-vertex" />
+            <g class="cota__label">
+              <rect class="cota__bg" id="scene-cota-bg" rx="3" />
+              <text>
+                <tspan class="cota__title" id="scene-cota-title"></tspan>
+                <tspan class="cota__sub" id="scene-cota-sub"></tspan>
+              </text>
+            </g>
+          </g>
+        </svg>
+      </div>
+
+      <div class="scene__overlay container">
+        <div class="trail-sign">
+          <div class="trail-sign__board">
+            <h1 class="trail-sign__title">
+              <span class="trail-sign__name">Pablo José Cortés Santos</span>
+            </h1>
+            <p class="trail-sign__role">Tech Lead Backend / Full Stack Developer</p>
+            <p class="trail-sign__stack">Python · Django · Angular · Docker</p>
+            <p class="trail-sign__hint">Cada cumbre es un proyecto. Explóralas o entra al refugio.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <p>© <span id="current-year">2026</span> Pablo José Cortés Santos</p>
+      <p>Hecho con HTML, CSS y JavaScript. <a href="https://github.com/pabs7/pabs7.github.io" target="_blank" rel="noopener noreferrer">Código fuente</a></p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("current-year").textContent = String(new Date().getFullYear());
+  </script>
+  <script type="module" src="js/scene.js"></script>
+</body>
+</html>

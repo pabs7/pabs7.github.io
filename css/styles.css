@@ -1,0 +1,767 @@
+/* ==========================================================================
+   Variables
+   ========================================================================== */
+:root {
+  --color-bg: #ffffff;
+  --color-bg-alt: #f4f6f9;
+  --color-surface: #ffffff;
+  --color-text: #15181e;
+  --color-text-muted: #5b6472;
+  --color-border: #e2e6ec;
+  --color-accent: #2563eb;
+  --color-accent-contrast: #ffffff;
+  --color-impact: #15181e;
+
+  /* Cartel de madera del campamento */
+  --color-wood: #8a5a33;
+  --color-wood-groove: #6f4527;
+  --color-wood-light: #a8713f;
+  --color-wood-post: #5b371d;
+  --color-wood-edge: #3b2313;
+  --color-wood-outline: #1f1209;
+  --color-wood-nail: #2a180c;
+  --color-wood-text: #f7e6c4;
+  --color-wood-accent: #ffcf8a;
+
+  /* Etiqueta de cartón del material de escalada */
+  --color-tag: #ead2a1;
+  --color-tag-ink: #3a2615;
+  --color-tag-muted: #7a5634;
+  --color-tag-string: #f3e2bd;
+
+  /* Diario de aventura */
+  --color-paper: #f3e8d2;
+  --color-paper-shade: #e4d3af;
+  --color-ink: #3a2c1d;
+
+  --font-sans: "Inter", system-ui, -apple-system, Segoe UI, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --radius-sm: 4px;
+  --radius-md: 10px;
+  --radius-lg: 18px;
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4.5rem;
+
+  --max-width: 1100px;
+  --transition: 150ms ease;
+  --shadow-sm: 0 1px 2px rgba(15, 18, 23, 0.06), 0 1px 1px rgba(15, 18, 23, 0.04);
+}
+
+/* ==========================================================================
+   Reset básico
+   ========================================================================== */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color var(--transition), color var(--transition);
+}
+
+img { max-width: 100%; display: block; }
+
+a { color: var(--color-accent); }
+
+h1, h2, h3 { line-height: 1.25; }
+
+ul { margin: 0; padding: 0; list-style: none; }
+
+button { font-family: inherit; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* ==========================================================================
+   Utilidades
+   ========================================================================== */
+.container {
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: var(--space-4);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: var(--space-4);
+  background: var(--color-accent);
+  color: var(--color-accent-contrast);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-sm);
+  z-index: 200;
+  transition: top var(--transition);
+}
+
+.skip-link:focus { top: var(--space-4); }
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.impact {
+  color: var(--color-impact);
+  font-family: var(--font-mono);
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   Botones
+   ========================================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-3) var(--space-5);
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background-color var(--transition), color var(--transition), border-color var(--transition);
+}
+
+.btn--primary {
+  background-color: var(--color-accent);
+  color: var(--color-accent-contrast);
+}
+
+.btn--primary:hover { opacity: 0.9; }
+
+.btn--secondary {
+  background-color: transparent;
+  color: var(--color-text);
+  border-color: var(--color-border);
+}
+
+.btn--secondary:hover { border-color: var(--color-accent); color: var(--color-accent); }
+
+/* ==========================================================================
+   Header / Navegación
+   ========================================================================== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background-color: color-mix(in srgb, var(--color-bg) 92%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.nav {
+  padding-block: var(--space-3);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.nav__brand {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-decoration: none;
+  color: var(--color-text);
+}
+
+.nav__brand-sub {
+  color: var(--color-text-muted);
+  font-weight: 400;
+  font-size: 0.9rem;
+}
+
+.nav__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.nav__link {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  text-decoration: none;
+  color: var(--color-text);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+}
+
+.nav__link:hover, .nav__link:focus-visible { color: var(--color-accent); }
+
+.nav__link[aria-current="page"] {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ==========================================================================
+   Escenas a pantalla completa (campamento y refugio)
+   ========================================================================== */
+.scene-page .site-header {
+  position: absolute;
+  inset: 0 0 auto 0;
+  background: linear-gradient(to bottom, rgba(10, 8, 25, 0.55), transparent);
+  backdrop-filter: none;
+  border-bottom: none;
+}
+
+.scene-page .nav__brand,
+.scene-page .nav__brand-sub,
+.scene-page .nav__link {
+  color: #ffffff;
+}
+
+.scene {
+  position: relative;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+  background-color: #1b1830;
+}
+
+/* En pantallas más estrechas que la ilustración, se desplaza en horizontal en vez de recortarse. */
+.scene__viewport {
+  height: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+}
+
+.scene__viewport::-webkit-scrollbar { display: none; }
+
+.scene__art {
+  display: block;
+  height: 100%;
+  width: max(100%, calc(100svh * var(--scene-ratio)));
+}
+
+.scene__dim {
+  fill: #0a0819;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 200ms ease;
+}
+
+.scene__art.is-focusing .scene__dim { opacity: 0.6; }
+
+.hotspot { cursor: pointer; }
+.hotspot:focus { outline: none; }
+
+.hotspot__shape {
+  fill: transparent;
+  pointer-events: all;
+  stroke: transparent;
+  stroke-width: 2;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+  transition: stroke var(--transition);
+}
+
+.hotspot:focus-visible .hotspot__shape {
+  stroke: var(--color-accent);
+  stroke-width: 3;
+}
+
+/* Cota: línea vertical desde la cima con el nombre, como en un mapa topográfico. */
+.cota { pointer-events: none; }
+
+.cota__line {
+  stroke: #ffffff;
+  stroke-width: 1.5;
+  transform-box: fill-box;
+  transform-origin: bottom;
+  transform: scaleY(0);
+  transition: transform 220ms ease-out;
+}
+
+.cota__vertex {
+  fill: #ffffff;
+  stroke: #0a0819;
+  stroke-width: 1;
+  opacity: 0;
+  transition: opacity 150ms ease;
+}
+
+.cota__label {
+  opacity: 0;
+  transition: opacity 180ms ease 160ms;
+}
+
+.cota.is-visible .cota__line { transform: scaleY(1); }
+.cota.is-visible .cota__vertex,
+.cota.is-visible .cota__label { opacity: 1; }
+
+.cota__bg {
+  fill: rgba(10, 8, 25, 0.8);
+  stroke: rgba(255, 255, 255, 0.3);
+  stroke-width: 1;
+}
+
+.cota__title {
+  fill: #ffffff;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.cota__sub {
+  fill: #ffcf8a;
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+
+/* Etiqueta de cartón colgada del material de escalada (refugio). */
+.hotspot--info { cursor: help; }
+
+.tag {
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.tag.is-visible { opacity: 1; transform: translateY(0); }
+
+.tag__bg {
+  fill: var(--color-tag);
+  stroke: var(--color-wood-edge);
+  stroke-width: 1.5;
+}
+
+.tag__hole {
+  fill: var(--color-wood-edge);
+}
+
+.tag__string {
+  stroke: var(--color-tag-string);
+  stroke-width: 1.2;
+}
+
+
+.tag__title {
+  fill: var(--color-tag-ink);
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.tag--loose .tag__hole,
+.tag--loose .tag__string { display: none; }
+
+.tag__item {
+  fill: var(--color-tag-ink);
+  font-family: var(--font-sans);
+  font-size: 9.5px;
+}
+
+.scene__overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+/* Cartel de sendero: tablón de madera clavado sobre dos postes que bajan hasta el suelo. */
+.trail-sign {
+  position: relative;
+  display: inline-block;
+  max-width: min(100%, 420px);
+  padding-bottom: 40px;
+}
+
+.trail-sign::before,
+.trail-sign::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 10px;
+  height: 52px;
+  background-color: var(--color-wood-post);
+  box-shadow: inset 3px 0 0 var(--color-wood-light), inset -3px 0 0 var(--color-wood-edge);
+}
+
+.trail-sign::before { left: 18%; }
+.trail-sign::after { right: 18%; }
+
+.trail-sign__board {
+  position: relative;
+  z-index: 1;
+  padding: 12px 18px 10px;
+  color: var(--color-wood-text);
+  text-shadow: 2px 2px 0 var(--color-wood-edge);
+  border: 3px solid var(--color-wood-edge);
+  box-shadow: 0 0 0 2px var(--color-wood-outline), 6px 6px 0 2px rgba(10, 8, 25, 0.35);
+  background:
+    linear-gradient(var(--color-wood-nail), var(--color-wood-nail)) 6px 6px / 5px 5px no-repeat,
+    linear-gradient(var(--color-wood-nail), var(--color-wood-nail)) calc(100% - 6px) 6px / 5px 5px no-repeat,
+    linear-gradient(var(--color-wood-nail), var(--color-wood-nail)) 6px calc(100% - 6px) / 5px 5px no-repeat,
+    linear-gradient(var(--color-wood-nail), var(--color-wood-nail)) calc(100% - 6px) calc(100% - 6px) / 5px 5px no-repeat,
+    repeating-linear-gradient(to bottom, var(--color-wood) 0 24px, var(--color-wood-groove) 24px 26px);
+}
+
+.trail-sign__title { margin: 0 0 var(--space-2); line-height: 1.1; }
+
+.trail-sign__name {
+  display: block;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: clamp(1.2rem, 2.6vw, 1.6rem);
+}
+
+.trail-sign__role {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 0.8rem;
+  margin: 0 0 2px;
+}
+
+.trail-sign__stack {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  margin: 0 0 var(--space-2);
+}
+
+.trail-sign__hint {
+  margin: 0;
+  padding-top: 6px;
+  border-top: 2px solid var(--color-wood-groove);
+  font-size: 0.72rem;
+}
+
+/* ==========================================================================
+   Diario de montaña (bitacora.html)
+   ========================================================================== */
+.bitacora { padding-block: var(--space-6); }
+
+.bitacora__role {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  margin: 0 0 var(--space-4);
+}
+
+.bitacora__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.bitacora__section { margin-top: var(--space-6); }
+
+.bitacora__section p { margin: 0 0 var(--space-3); }
+
+.bitacora__heading {
+  font-family: var(--font-sans);
+  font-size: 1.35rem;
+  margin: 0 0 var(--space-4);
+  padding-bottom: var(--space-2);
+  border-bottom: 2px dashed var(--color-paper-shade);
+}
+
+.bitacora__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.bitacora__list a { color: var(--color-ink); text-underline-offset: 3px; }
+
+/* Pestañas del cuaderno, asomando por encima de la hoja. */
+.cuaderno-tabs {
+  max-width: 760px;
+  margin-inline: auto;
+  display: flex;
+  gap: var(--space-1);
+  padding-left: var(--space-5);
+}
+
+.cuaderno-tabs__tab {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--color-text-muted);
+  background-color: var(--color-paper-shade);
+  border: 1px solid var(--color-paper-shade);
+  border-bottom: none;
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  padding: var(--space-2) var(--space-4);
+}
+
+.cuaderno-tabs__tab:hover { color: var(--color-ink); }
+
+.cuaderno-tabs__tab[aria-current="page"] {
+  color: var(--color-ink);
+  background-color: color-mix(in srgb, var(--color-paper) 85%, #ffffff 15%);
+  position: relative;
+  top: 1px;
+}
+
+/* Lista de expediciones (expediciones.html) */
+.expediciones {
+  display: flex;
+  flex-direction: column;
+  margin: var(--space-5) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.expedicion {
+  padding-block: var(--space-4);
+  border-top: 2px dashed var(--color-paper-shade);
+}
+
+.expedicion:last-child { border-bottom: 2px dashed var(--color-paper-shade); }
+
+.expedicion__link {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-1) var(--space-4);
+  color: var(--color-ink);
+  text-decoration: none;
+}
+
+.expedicion__title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: var(--color-paper-shade);
+  text-underline-offset: 4px;
+}
+
+.expedicion__link:hover .expedicion__title,
+.expedicion__link:focus-visible .expedicion__title {
+  color: var(--color-accent);
+  text-decoration-color: currentColor;
+}
+
+.expedicion__meta {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.expedicion__summary {
+  margin: var(--space-2) 0 0;
+  color: var(--color-text-muted);
+}
+
+.diario__nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+}
+
+/* Línea de tiempo de experiencia */
+.timeline {
+  border-left: 2px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  padding-left: var(--space-5);
+  margin: 0;
+}
+
+.timeline__item { position: relative; }
+
+.timeline__item::before {
+  content: "";
+  position: absolute;
+  left: calc(-1 * var(--space-5) - 6px);
+  top: 4px;
+  width: 10px;
+  height: 10px;
+  background-color: var(--color-accent);
+}
+
+.timeline__role { margin: 0 0 var(--space-1); font-size: 1.1rem; }
+
+.timeline__meta {
+  font-family: var(--font-mono);
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  margin: 0 0 var(--space-3);
+}
+
+.timeline__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  color: var(--color-text-muted);
+}
+
+.timeline__list li::before {
+  content: "— ";
+  color: var(--color-accent);
+}
+
+/* ==========================================================================
+   Diario de la aventura (detalle de proyecto)
+   ========================================================================== */
+/* Sobre el papel, los colores de UI se redefinen como tintas. */
+.diario {
+  --color-text: var(--color-ink);
+  --color-text-muted: #5c4a35;
+  --color-accent: #9a4a1c;
+  --color-accent-contrast: #fff8ec;
+  --color-border: var(--color-paper-shade);
+  --color-impact: var(--color-ink);
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  min-height: 100vh;
+}
+
+.diario .site-header {
+  background-color: color-mix(in srgb, var(--color-paper) 92%, transparent);
+  border-bottom-color: var(--color-paper-shade);
+}
+
+.diario .nav__brand,
+.diario .nav__link {
+  color: var(--color-ink);
+}
+
+.diario__sheet {
+  max-width: 760px;
+  margin-inline: auto;
+  padding: var(--space-6) var(--space-5);
+  background-color: color-mix(in srgb, var(--color-paper) 85%, #ffffff 15%);
+  border: 1px solid var(--color-paper-shade);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.diario__meta {
+  font-family: var(--font-mono);
+  color: color-mix(in srgb, var(--color-ink) 70%, transparent);
+  margin: 0 0 var(--space-2);
+}
+
+.diario__title {
+  font-size: clamp(1.5rem, 4vw, 2.25rem);
+  margin: 0 0 var(--space-4);
+  border-bottom: 2px dashed var(--color-paper-shade);
+  padding-bottom: var(--space-4);
+}
+
+.diario__label {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  color: color-mix(in srgb, var(--color-ink) 65%, transparent);
+  margin: var(--space-5) 0 var(--space-2);
+}
+
+.diario__body {
+  margin: 0;
+}
+
+.diario__highlights {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.diario__highlights li::before {
+  content: "⛰ ";
+}
+
+.diario__tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.diario__tech li {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  background-color: color-mix(in srgb, var(--color-paper) 70%, #ffffff 30%);
+  border: 1px solid var(--color-paper-shade);
+  border-radius: var(--radius-sm);
+  padding: 2px var(--space-2);
+}
+
+.diario__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin-top: var(--space-2);
+}
+
+.diario__nda {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  border: 1px dashed var(--color-paper-shade);
+  border-radius: var(--radius-sm);
+  padding: var(--space-2) var(--space-3);
+  display: inline-block;
+}
+
+.diario__back {
+  display: inline-block;
+  margin-top: var(--space-6);
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+.site-footer {
+  border-top: 1px solid var(--color-border);
+  padding-block: var(--space-5);
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+.site-footer__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+@media (min-width: 640px) {
+  .site-footer__inner {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.site-footer a { color: var(--color-text-muted); }
+.site-footer a:hover, .site-footer a:focus-visible { color: var(--color-accent); }

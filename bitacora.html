@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diario de aventuras — Pablo José Cortés Santos</title>
+  <meta name="description" content="Sobre mí, experiencia, formación, idiomas y contacto de Pablo José Cortés Santos, Tech Lead Backend / Full Stack Developer." />
+  <meta name="color-scheme" content="light" />
+
+  <meta property="og:type" content="profile" />
+  <meta property="og:title" content="Diario de montaña de Pablo José Cortés Santos" />
+  <meta property="og:description" content="Tech Lead Backend / Full Stack Developer especializado en Python, Django y Angular." />
+  <meta property="og:locale" content="es_ES" />
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="canonical" href="https://pabs7.github.io/bitacora.html" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="diario">
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a class="nav__brand" href="index.html">
+        PCS <span class="nav__brand-sub">// diario de aventuras</span>
+      </a>
+      <div class="nav__actions">
+        <a class="nav__link" href="index.html">Campamento</a>
+        <a class="nav__link" href="refugio.html">Refugio</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <div class="container bitacora">
+      <nav class="cuaderno-tabs" aria-label="Secciones del diario de montaña">
+        <a class="cuaderno-tabs__tab" href="bitacora.html" aria-current="page">Trayectoria</a>
+        <a class="cuaderno-tabs__tab" href="expediciones.html">Expediciones</a>
+      </nav>
+
+      <article class="diario__sheet">
+        <p class="diario__meta">Diario de aventuras · Cádiz, España</p>
+        <h1 class="diario__title">Pablo José Cortés Santos</h1>
+        <p class="bitacora__role">Tech Lead Backend / Full Stack Developer</p>
+
+        <div class="bitacora__actions">
+          <a class="btn btn--primary" href="assets/cv/C_V_Pablo_Cortes_Santos_2026_sin_tlf.pdf" download="CV_Pablo_Cortes_Santos_2026.pdf">Descargar CV</a>
+          <a class="btn btn--secondary" href="#contacto">Contacto</a>
+        </div>
+
+        <section class="bitacora__section" aria-labelledby="sobre-mi">
+          <h2 class="bitacora__heading" id="sobre-mi">Sobre mí</h2>
+          <p>
+            Full Stack Developer con más de 5 años de experiencia diseñando, desarrollando y
+            desplegando aplicaciones web escalables, especializado en Python, Django y Angular, con
+            experiencia en arquitecturas REST, microservicios y Docker.
+          </p>
+          <p>
+            Actualmente lidero un equipo de desarrollo: combino desarrollo
+            activo con code review, definición de arquitectura, diseño y reparto de tareas,
+            coordinación de despliegues y mantenimiento de servidores.
+          </p>
+          <p>
+            Gestiono incidencias con Azure DevOps y soy referente técnico y de mentoring del equipo,
+            bajo Agile/Scrum. Mi trayectoria viene de la electrónica y los sistemas embebidos, lo que
+            me da una base sólida en el funcionamiento real de los sistemas que construyo.
+          </p>
+        </section>
+
+        <section class="bitacora__section" aria-labelledby="experiencia">
+          <h2 class="bitacora__heading" id="experiencia">Experiencia</h2>
+          <ol class="timeline">
+            <li class="timeline__item">
+              <h3 class="timeline__role">Líder Técnico Backend / Full Stack Developer</h3>
+              <p class="timeline__meta">Solfium · 2023 – Presente · Remoto / México</p>
+              <ul class="timeline__list">
+                <li>Liderazgo de un equipo de 5 personas: planificación, reparto de tareas, revisión y aprobación de PRs.</li>
+                <li>Definición de arquitectura backend, modelo de datos y APIs REST de nuevos proyectos.</li>
+                <li>Descomposición de requisitos funcionales en tareas técnicas accionables.</li>
+                <li>Coordinación de despliegues a producción y mantenimiento de servidores y ramas.</li>
+                <li>Gestión de bugs e incidencias con Azure DevOps.</li>
+                <li>Desarrollo full stack con Django y Angular/React Native en microservicios con Docker.</li>
+                <li>Sistema de telemetría para plantas fotovoltaicas: <strong class="impact">−35%</strong> en tiempos de procesamiento.</li>
+                <li>Administración y optimización de PostgreSQL, MySQL y MongoDB: <strong class="impact">+40%</strong> de rendimiento.</li>
+              </ul>
+            </li>
+            <li class="timeline__item">
+              <h3 class="timeline__role">Python Developer</h3>
+              <p class="timeline__meta">Grupo Tecnologías del Tráfico · 2022 – 2023 · Madrid</p>
+              <ul class="timeline__list">
+                <li>Sistemas embebidos en Python para comunicación con radares de tráfico.</li>
+                <li>Comunicación Bluetooth y transmisión de datos en tiempo real.</li>
+                <li><strong class="impact">−25%</strong> de pérdida de paquetes mejorando validación y envío de datos.</li>
+              </ul>
+            </li>
+            <li class="timeline__item">
+              <h3 class="timeline__role">Embedded Linux Developer</h3>
+              <p class="timeline__meta">Bc-techs · 2020 – 2022 · Madrid</p>
+              <ul class="timeline__list">
+                <li>Software embebido para puntos de acceso Wi-Fi sobre OpenWRT.</li>
+                <li>Automatización de despliegues y compilaciones con Bash y Python: <strong class="impact">−25%</strong> en tiempos.</li>
+              </ul>
+            </li>
+          </ol>
+        </section>
+
+        <section class="bitacora__section" aria-labelledby="formacion">
+          <h2 class="bitacora__heading" id="formacion">Formación</h2>
+          <ul class="bitacora__list">
+            <li>Grado en Ingeniería Electrónica de Telecomunicaciones — Universidad de Alcalá</li>
+            <li>Beca en Ingeniería Electrónica — Universidad Politécnica de Barcelona</li>
+            <li>FP Grado Superior en Electrónica y Automática Industrial</li>
+          </ul>
+        </section>
+
+        <section class="bitacora__section" aria-labelledby="idiomas">
+          <h2 class="bitacora__heading" id="idiomas">Idiomas</h2>
+          <ul class="bitacora__list">
+            <li>Español — Nativo</li>
+            <li>Inglés — B2</li>
+            <li>Catalán — B1</li>
+          </ul>
+        </section>
+
+        <section class="bitacora__section" aria-labelledby="contacto">
+          <h2 class="bitacora__heading" id="contacto">Contacto</h2>
+          <ul class="bitacora__list">
+            <li><a href="mailto:pablocortessantos95@gmail.com">pablocortessantos95@gmail.com</a></li>
+            <li><a href="https://www.linkedin.com/in/pablo-cortes-santos-41b0761ab/" target="_blank" rel="noopener noreferrer">linkedin.com/in/pablo-cortes-santos</a></li>
+            <!-- <li><a href="https://github.com/pabs7" target="_blank" rel="noopener noreferrer">github.com/pabs7</a></li> -->
+            <li>Cádiz, España</li>
+          </ul>
+        </section>
+
+        <a class="btn btn--secondary diario__back" href="refugio.html">Volver al refugio</a>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <p>© <span id="current-year">2026</span> Pablo José Cortés Santos</p>
+      <p>Hecho con HTML, CSS y JavaScript. <a href="https://github.com/pabs7/pabs7.github.io" target="_blank" rel="noopener noreferrer">Código fuente</a></p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("current-year").textContent = String(new Date().getFullYear());
+  </script>
+</body>
+</html>
