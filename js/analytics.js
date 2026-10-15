@@ -2,7 +2,7 @@
 // cookie hasta que el visitante pulsa "Aceptar". La elección se guarda en localStorage y se puede
 // cambiar en cookies.html.
 
-const GA_ID = ""; // ID de medición de GA4, p. ej. "G-ABC123XYZ". Vacío = analítica desactivada.
+const GA_ID = "G-MH94SXXFW8"; // ID de medición de GA4. Vacío = analítica desactivada.
 const STORAGE_KEY = "consentimiento-analitica";
 const COOKIES_PAGE = new URL("../cookies.html", import.meta.url).href;
 
