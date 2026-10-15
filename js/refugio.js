@@ -70,7 +70,7 @@ const GEAR = [
   ariaLabel: `${gear.title}: ${gear.items.join(", ")}`,
 }));
 
-const TAG = { padX: 10, padY: 8, gap: 16, lineGap: 13, titleGap: 15, holeSpace: 8 };
+const TAG = { padX: 10, padY: 8, gap: 16, holeSpace: 8 };
 
 function placeTag(def, item, width, height) {
   const anchorX = (item.minX + item.maxX) / 2;
@@ -97,11 +97,16 @@ function showTag(def) {
   const text = document.getElementById("scene-tag-text");
 
   text.replaceChildren();
-  text.appendChild(svgEl("tspan", { class: "tag__title", x: 0, y: 0 })).textContent = def.title;
+  const titleEl = text.appendChild(svgEl("tspan", { class: "tag__title", x: 0, y: 0 }));
+  titleEl.textContent = def.title;
+  // El tamaño de letra cambia en móvil (CSS): el interlineado se calcula a partir de él.
+  const titleSize = parseFloat(getComputedStyle(titleEl).fontSize);
   def.items.forEach((item, i) => {
-    const tspan = svgEl("tspan", { class: "tag__item", x: 0, dy: i === 0 ? TAG.titleGap + 2 : TAG.lineGap });
-    tspan.textContent = `· ${item}`;
+    const tspan = svgEl("tspan", { class: "tag__item", x: 0 });
     text.appendChild(tspan);
+    const itemSize = parseFloat(getComputedStyle(tspan).fontSize);
+    tspan.setAttribute("dy", i === 0 ? titleSize * 1.4 : itemSize * 1.35);
+    tspan.textContent = `· ${item}`;
   });
 
   // La etiqueta centrada (ventana) no cuelga de nada: sin agujero ni cordel.

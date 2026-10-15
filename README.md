@@ -40,6 +40,7 @@ y abrir `http://localhost:8000`.
 index.html, refugio.html            Escenas interactivas a pantalla completa
 bitacora.html, expediciones.html    Diario de montaña
 projects/diario.html                Plantilla del diario de cada proyecto
+cookies.html                        Política de cookies y cambio de consentimiento
 404.html
 css/styles.css                      Estilos globales (variables en :root)
 js/
@@ -49,6 +50,7 @@ js/
   sierra.js                         Zonas de los picos (generado por tools/picos.py)
   refugio.js                        Interior: material de escalada → habilidades
   diario.js, expediciones.js        Render del diario de proyecto y de la lista
+  analytics.js                      Google Analytics, solo tras aceptar el banner de cookies
 assets/img/                         Ilustraciones optimizadas (WebP)
 assets/cv/                          CV descargable
 tools/                              Scripts de Python (Pillow) para regenerar zonas y cielo

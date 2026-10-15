@@ -64,7 +64,8 @@ function showCota({ apex, title, subtitle }) {
   titleEl.setAttribute("x", 0);
   titleEl.setAttribute("y", 0);
   subEl.setAttribute("x", 0);
-  subEl.setAttribute("dy", 16);
+  // El tamaño de letra cambia en móvil (CSS): el interlineado se calcula a partir de él.
+  subEl.setAttribute("dy", parseFloat(getComputedStyle(titleEl).fontSize) * 1.1);
 
   const box = titleEl.parentNode.getBBox();
   const padX = 8;

@@ -462,6 +462,64 @@ button { font-family: inherit; }
   font-size: 0.72rem;
 }
 
+/* Aviso de "desliza" cuando la escena es más ancha que la pantalla (móvil y tablet en vertical). */
+.scene__hint {
+  position: absolute;
+  top: 72px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  padding: var(--space-2) var(--space-4);
+  border-radius: 999px;
+  background-color: rgba(10, 8, 25, 0.7);
+  color: #ffffff;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  white-space: nowrap;
+  pointer-events: none;
+  transition: opacity 300ms ease;
+}
+
+.scene__hint.is-hidden { opacity: 0; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .scene__hint:not(.is-hidden) { animation: hint-nudge 1.6s ease-in-out infinite; }
+}
+
+@keyframes hint-nudge {
+  0%, 100% { transform: translateX(-50%); }
+  50% { transform: translateX(calc(-50% + 6px)); }
+}
+
+/* Móvil: cabecera en una línea, cartel compacto y textos de la escena más grandes
+   (en vertical la ilustración se escala por la altura y los textos SVG quedarían pequeños). */
+@media (max-width: 640px) {
+  .nav__brand-sub { display: none; }
+  .nav__actions { gap: var(--space-2); }
+
+  .trail-sign {
+    max-width: min(100%, 270px);
+    padding-bottom: 28px;
+  }
+
+  .trail-sign::before,
+  .trail-sign::after {
+    width: 8px;
+    height: 36px;
+  }
+
+  .trail-sign__board { padding: 9px 12px 8px; }
+  .trail-sign__name { font-size: 1.05rem; }
+  .trail-sign__role { font-size: 0.72rem; }
+  .trail-sign__stack { font-size: 0.66rem; margin-bottom: 6px; }
+  .trail-sign__hint { font-size: 0.66rem; padding-top: 4px; }
+
+  .cota__title { font-size: 20px; }
+  .cota__sub { font-size: 14px; }
+  .tag__title { font-size: 14px; }
+  .tag__item { font-size: 11.5px; }
+}
+
 /* ==========================================================================
    Diario de montaña (bitacora.html)
    ========================================================================== */
@@ -581,6 +639,39 @@ button { font-family: inherit; }
   margin: var(--space-2) 0 0;
   color: var(--color-text-muted);
 }
+
+/* Banner de consentimiento de analítica: nota de papel; "Aceptar" y "Rechazar" igual de visibles. */
+.cookie-banner {
+  position: fixed;
+  z-index: 100;
+  left: var(--space-4);
+  right: var(--space-4);
+  bottom: var(--space-4);
+  max-width: 520px;
+  margin-inline: auto;
+  padding: var(--space-4) var(--space-5);
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  border: 1px solid var(--color-paper-shade);
+  border-radius: var(--radius-md);
+  box-shadow: 0 8px 24px rgba(10, 8, 25, 0.35);
+}
+
+.cookie-banner__text { margin: 0 0 var(--space-3); font-size: 0.9rem; }
+.cookie-banner__text a { color: var(--color-ink); text-underline-offset: 3px; }
+
+.cookie-banner__actions {
+  display: flex;
+  gap: var(--space-3);
+  justify-content: flex-end;
+}
+
+.cookie-banner__btn {
+  background-color: #9a4a1c;
+  color: #fff8ec;
+}
+
+.cookie-banner__btn:hover { opacity: 0.9; }
 
 .diario__nav {
   display: flex;

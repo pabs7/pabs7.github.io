@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cookies — Pablo José Cortés Santos</title>
+  <meta name="description" content="Información sobre las cookies de analítica del portfolio de Pablo José Cortés Santos." />
+  <meta name="color-scheme" content="light" />
+  <meta name="robots" content="noindex" />
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="diario">
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a class="nav__brand" href="index.html">
+        PCS <span class="nav__brand-sub">// cookies</span>
+      </a>
+      <div class="nav__actions">
+        <a class="nav__link" href="index.html">Campamento</a>
+        <a class="nav__link" href="refugio.html">Refugio</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <div class="container bitacora">
+      <article class="diario__sheet">
+        <p class="diario__meta">Política de cookies</p>
+        <h1 class="diario__title">Cookies</h1>
+
+        <section class="bitacora__section">
+          <h2 class="bitacora__heading">Qué uso y para qué</h2>
+          <p>
+            Este portfolio solo usa cookies de <strong>Google Analytics</strong>, y únicamente si las
+            aceptas. Sirven para saber cuántas personas lo visitan, qué páginas ven y desde dónde llegan,
+            de forma agregada. No se usan para publicidad.
+          </p>
+          <ul class="bitacora__list">
+            <li><code>_ga</code> — distingue visitantes. Duración: 2 años.</li>
+            <li><code>_ga_&lt;ID&gt;</code> — mantiene el estado de la sesión. Duración: 2 años.</li>
+          </ul>
+          <p>
+            Las gestiona Google Ireland Limited. Más información en la
+            <a href="https://policies.google.com/technologies/cookies?hl=es" target="_blank" rel="noopener noreferrer">política de cookies de Google</a>.
+          </p>
+          <p>
+            Tu elección se guarda en el almacenamiento local del navegador (no es una cookie) para no
+            volver a preguntarte.
+          </p>
+        </section>
+
+        <section class="bitacora__section">
+          <h2 class="bitacora__heading">Tu elección</h2>
+          <p id="estado-consentimiento" aria-live="polite">Cargando…</p>
+          <div class="bitacora__actions">
+            <button class="btn btn--primary" type="button" id="aceptar-analitica">Aceptar analítica</button>
+            <button class="btn btn--primary" type="button" id="rechazar-analitica">Rechazar analítica</button>
+          </div>
+        </section>
+
+        <section class="bitacora__section">
+          <h2 class="bitacora__heading">Responsable</h2>
+          <p>Pablo José Cortés Santos · <a href="mailto:pablocortessantos95@gmail.com">pablocortessantos95@gmail.com</a></p>
+        </section>
+
+        <div class="diario__nav">
+          <a class="btn btn--secondary" href="index.html">Volver al campamento base</a>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <p>© <span id="current-year">2026</span> Pablo José Cortés Santos</p>
+      <p>Hecho con HTML, CSS y JavaScript. <a href="https://github.com/pabs7/pabs7.github.io" target="_blank" rel="noopener noreferrer">Código fuente</a></p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("current-year").textContent = String(new Date().getFullYear());
+  </script>
+  <script type="module">
+    import { CONSENT, isAnalyticsConfigured, readConsent, setConsent } from "./js/analytics.js";
+
+    const status = document.getElementById("estado-consentimiento");
+    const render = () => {
+      if (!isAnalyticsConfigured()) {
+        status.textContent = "La analítica está desactivada en este momento: no se usa ninguna cookie.";
+        document.querySelector(".bitacora__actions").hidden = true;
+        return;
+      }
+      const consent = readConsent();
+      status.textContent =
+        consent === CONSENT.accepted ? "Has aceptado las cookies de analítica." :
+        consent === CONSENT.rejected ? "Has rechazado las cookies de analítica." :
+        "Todavía no has elegido: no se usa ninguna cookie de analítica.";
+    };
+
+    document.getElementById("aceptar-analitica").addEventListener("click", () => { setConsent(true); render(); });
+    document.getElementById("rechazar-analitica").addEventListener("click", () => { setConsent(false); render(); });
+    render();
+  </script>
+</body>
+</html>
